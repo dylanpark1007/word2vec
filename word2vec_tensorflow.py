@@ -340,7 +340,6 @@ with sess:
     iteration = 1
     loss = 0
     data_index2 = 0
-    # iteration으로 해야하나? #interation으로 할 경우, data index를 0으로?
 
     for e in range(1, epochs+1):
         if e == 1:
