@@ -622,40 +622,10 @@ def train(fi, fo, cbow, neg, dim, alpha, win, min_count, num_processes, binary, 
 
 
 if __name__ == '__main__':
-    # parser = argparse.ArgumentParser()
-    # # parser.add_argument('-train', help='Training file', dest='fi')
-    # # parser.add_argument('-model', help='Output model file', dest='fo')
-    # parser.add_argument('-train', help='Training file', dest='fi', required=True)
-    # parser.add_argument('-model', help='Output model file', dest='fo', required=True)
-    # parser.add_argument('-cbow', help='1 for CBOW, 0 for skip-gram', dest='cbow', default=1, type=int)
-    # parser.add_argument('-negative',
-    #                     help='Number of negative examples (>0) for negative sampling, 0 for hierarchical softmax',
-    #                     dest='neg', default=5, type=int)
-    # parser.add_argument('-dim', help='Dimensionality of word embeddings', dest='dim', default=100, type=int)
-    # parser.add_argument('-alpha', help='Starting alpha', dest='alpha', default=0.025, type=float)
-    # parser.add_argument('-window', help='Max window length', dest='win', default=5, type=int)
-    # parser.add_argument('-min-count', help='Min count for words used to learn <unk>', dest='min_count', default=5,
-    #                     type=int)
-    # parser.add_argument('-processes', help='Number of processes', dest='num_processes', default=1, type=int)
-    # parser.add_argument('-binary', help='1 for output model in binary format, 0 otherwise', dest='binary', default=0,
-    #                     type=int)
-    # # TO DO: parser.add_argument('-epoch', help='Number of training epochs', dest='epoch', default=1, type=int)
-    # args = parser.parse_args()
-    #
-    # train(args.fi, args.fo, bool(args.cbow), args.neg, args.dim, args.alpha, args.win, args.min_count, args.num_processes, bool(args.binary))
 
     train(fi='text8', fo='file', cbow = False, neg=5, dim=300, alpha=0.001, win=5, min_count=5,num_processes=1, binary=False, subsamp =1)
 
     embedding, label = make_tsne('file')
     two_d_embeddings, words = print_tsne(embedding,label)
     plot(two_d_embeddings, words)
-
-
-
-## tsne가 잘못됨
-## epoch 주기 - 에폭시넘어갈때 파일이 닫히면서 fi.seek 에러남
-## epoch 되면 learning rate 감소되는거 적용
-## subsampling 적용
-## analogy test 진행(비교대상은 test안에 있는 단어들로)
-## one billion 돌려보기
 
